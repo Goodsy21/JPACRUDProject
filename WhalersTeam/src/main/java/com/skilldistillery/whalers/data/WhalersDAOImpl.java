@@ -32,20 +32,26 @@ public class WhalersDAOImpl implements WhalersDAO {
 
 	@Override
 	public Skater create(Skater skater) {
-		String jpql = "";
-		return skater;
+		String jpql = "INSERT into Skater (s.firstName, s.lastName, s.number, s. position, s.hometown) VALUES (?,?,?,?,?)";
+		return em.createQuery(jpql, Skater.class).getSingleResult();
 	}
 
 	@Override
 	public Skater update(int skaterId, Skater skater) {
-		// TODO Auto-generated method stub
+		Skater s = em.find(Skater.class, skaterId);
+		
 		return null;
 	}
 
 	@Override
-	public Skater delete(int skaterId, Skater skater) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean delete(int skaterId) {
+		boolean deletedSkater = false;
+		Skater s = em.find(Skater.class, skaterId);
+		if(s != null) {
+			em.remove(s);
+			deletedSkater = true;
+		}
+		return deletedSkater;
 	}
 
 }

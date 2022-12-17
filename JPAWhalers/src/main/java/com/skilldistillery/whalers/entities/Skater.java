@@ -22,6 +22,7 @@ public class Skater {
 
 	private String position;
 	
+	private String hometown;
 	public int getId() {
 		return id;
 	}
@@ -62,9 +63,17 @@ public class Skater {
 		this.position = position;
 	}
 
+	public String getHometown() {
+		return hometown;
+	}
+
+	public void setHometown(String hometown) {
+		this.hometown = hometown;
+	}
+
 	@Override
 	public String toString() {
 		return "Skater [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", number=" + number
-				+ ", position=" + position + "]";
+				+ ", position=" + position + ", hometown=" + hometown + "]";
 	}
 }

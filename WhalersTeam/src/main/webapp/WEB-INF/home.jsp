@@ -9,6 +9,6 @@
 </head>
 <body>
 <h1>Wheat Ridge Whalers Hockey Team</h1>
-<p>${skater.number}</p>
+<form action="findById"></form>
 </body>
 </html>
