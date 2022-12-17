@@ -9,4 +9,5 @@ public interface WhalersDAO {
 	List<Skater> findAll();
 	Skater create(Skater skater);
 	Skater update(int skaterId, Skater skater);
+	Skater delete(int skaterId, Skater skater);
 }

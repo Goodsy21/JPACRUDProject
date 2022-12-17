@@ -31,7 +31,7 @@ class WhalersTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		skater = em.find(Skater.class, 1);
+		skater = em.find(Skater.class, 6);
 	}
 
 	@AfterEach
@@ -43,7 +43,7 @@ class WhalersTest {
 	@Test
 	void test_Whalers_entity_mapping() {
 		assertNotNull(skater);
-		assertEquals("Ryan", skater.getFirstName());
+		assertEquals("Kyle", skater.getFirstName());
 	}
 
 }

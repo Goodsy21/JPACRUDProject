@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,6 @@ import com.skilldistillery.whalers.entities.Skater;
 @Transactional
 public class WhalersDAOImpl implements WhalersDAO {
 
-	
 	@PersistenceContext
 	private EntityManager em;
 
@@ -32,12 +32,18 @@ public class WhalersDAOImpl implements WhalersDAO {
 
 	@Override
 	public Skater create(Skater skater) {
+		String jpql = "";
+		return skater;
+	}
+
+	@Override
+	public Skater update(int skaterId, Skater skater) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Skater update(int skaterId, Skater skater) {
+	public Skater delete(int skaterId, Skater skater) {
 		// TODO Auto-generated method stub
 		return null;
 	}
