@@ -5,8 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="skater")
 public class Skater {
 
 	@Id
@@ -21,8 +23,10 @@ public class Skater {
 
 	private int number;
 
+	@Column(name = "position")
 	private String position;
 	
+	@Column(name = "hometown")
 	private String hometown;
 	
 	public int getId() {

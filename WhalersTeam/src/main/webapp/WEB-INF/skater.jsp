@@ -13,14 +13,14 @@
 <c:choose>
 <c:when test="${empty Skater s }"></c:when>
 </c:choose>
-<c:forEach var="skater" items="${skater }"></c:forEach>
+<c:forEach var="skater" items="${skater}"></c:forEach>
 <table>
 <tr>
 <th>First Name</th>
 <th>Last Name</th>
 <th>Number</th>
 <th>Position</th>
-<th>Hometown</th>
+<th>Home town</th>
 </tr>
 <tr>
 <td>${s.firstName}</td>

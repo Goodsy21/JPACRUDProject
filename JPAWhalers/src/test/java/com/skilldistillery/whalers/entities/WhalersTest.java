@@ -44,6 +44,9 @@ class WhalersTest {
 	void test_Whalers_entity_mapping() {
 		assertNotNull(skater);
 		assertEquals("Ryan", skater.getFirstName());
+		assertEquals("Goode", skater.getLastName());
+		assertEquals("Left Wing", skater.getPosition());
+		assertEquals("Calgary", skater.getHometown());
+		assertEquals(21, skater.getNumber());
 	}
-
 }
