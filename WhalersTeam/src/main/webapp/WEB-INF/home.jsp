@@ -29,9 +29,10 @@
     <td>${skater.firstName}</td>
     <td>${skater.lastName}</td>
     <td><a href="updatePlayer.do?fid=${skater.id}">Edit</a></td>
-    <td><a href="deletePlayer.do?fid=${skater.id}">Remove</a></td>
+    <td><a href="deleteSkater.do?fid=${skater.id}">Remove</a></td>
   </tr>
 </c:forEach>
 </table>
+<a href="createSkater.do">Add Skater</a>
 </body>
 </html>

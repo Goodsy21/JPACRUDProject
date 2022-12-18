@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,21 +31,25 @@ public class SkaterController {
 		return "updateSkater";
 	}
 	
-	@PostMapping("updateSkater.do")
-	public void updateSkater(Skater fid,  Model model) {
-//		Skater s = whalersDAO.findById(skater.getId());
-//		System.out.println(fid.toString());
-//		model.addAttribute("skater", s);
-		goToHome(model);
+	@PostMapping(path="updateSkater.do", params= {"id", "firstName", "lastName", "number", "position", "hometown"})
+	public void updateSkater(int id, String firstName, String lastName, int number, String position, String hometown) {
+		Skater newSkater = new Skater();
+		newSkater.setFirstName(firstName);
+		newSkater.setLastName(lastName);
+		newSkater.setNumber(number);
+		newSkater.setHometown(hometown);
+		newSkater.setPosition(position);
+		skaterDAO.update(id, newSkater);
+		
 	}
-	@PostMapping()
-	public boolean delete(int skaterId) {
+	@GetMapping("deleteSkater.do")
+	public String delete(@RequestParam int fid) {
 		boolean deletedSkater = false;
-		Skater s = skaterDAO.findById(skaterId);
+		Skater s = skaterDAO.findById(fid);
 		if(s != null) {
-			deletedSkater = skaterDAO.delete(skaterId);
+			skaterDAO.delete(fid);
 		}
-		return deletedSkater;
+		return "deleteConfirmation";
 	}
 	
 	@GetMapping("addSkater.do")

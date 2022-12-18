@@ -25,7 +25,8 @@
 </tr>
 </table>
 <br>
-<form action ="updateSkater.do?id=${skater.id }"  method = "POST">
+<form action ="updateSkater.do"  method = "POST" >
+<input type="hidden" name="id" value="${skater.id}">
 	<label for= "firstName">First Name:</label>
      <input type="text" name="firstName" required="required" value="${skater.firstName} " />
      <br>
@@ -50,5 +51,5 @@
     <input type= "submit" value= "Update Player">
     <br>
  </form>
-</body>
+<a href="home.do">Home</a></body>
 </html>
