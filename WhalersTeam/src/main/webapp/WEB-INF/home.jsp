@@ -10,7 +10,7 @@
 </head>
 <body>
 <h1>Wheat Ridge Whalers Hockey Team</h1>
-<form action="getPlayerByLastName.do" method="GET">
+<form action="updatePlayer.do" method="GET">
  Search by Last Name: <input type="text" name="lastName" />
   <input type="submit" value="Show Player" />
 </form>

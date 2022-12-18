@@ -4,10 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -34,17 +31,21 @@ public class SkaterDAOImpl implements SkaterDAO {
 
 	@Override
 	public Skater create(Skater skater) {
-		String jpql = "INSERT into Skater (s.firstName, s.lastName, s.number, s. position, s.hometown) VALUES (?,?,?,?,?)";
-		return em.createQuery(jpql, Skater.class).getSingleResult();
+		em.persist(skater);
+		return skater;
 	}
 
 	@Override
 	public Skater update(int skaterId, Skater skater) {
 		Skater s = em.find(Skater.class, skaterId);
 		if (s != null) {
-			
+			s.setFirstName(skater.getFirstName());
+			s.setLastName(skater.getLastName());
+			s.setNumber(skater.getNumber());
+			s.setPosition(skater.getPosition());
+			s.setHometown(skater.getHometown());
 		}
-		return s;
+		return skater;
 	}
 
 	@Override

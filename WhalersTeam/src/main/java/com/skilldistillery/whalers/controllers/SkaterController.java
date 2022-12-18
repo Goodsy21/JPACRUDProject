@@ -1,13 +1,10 @@
 package com.skilldistillery.whalers.controllers;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -18,16 +15,16 @@ import com.skilldistillery.whalers.entities.Skater;
 public class SkaterController {
 	
 	@Autowired
-	private SkaterDAO whalersDAO;
+	private SkaterDAO skaterDAO;
 	
 	@RequestMapping(path= {"/", "home.do"})
 	public String goToHome(Model model) {
-		model.addAttribute("skater", whalersDAO.findAll());
+		model.addAttribute("skater", skaterDAO.findAll());
 		return "home";
 	}
 	@GetMapping("updatePlayer.do")
 	public String goToSkater(@RequestParam int fid, Model model) {
-		Skater s = whalersDAO.findById(fid);
+		Skater s = skaterDAO.findById(fid);
 		System.out.println(s.toString());
 		model.addAttribute("skater", s);
 		return "updateSkater";
@@ -43,10 +40,16 @@ public class SkaterController {
 	@PostMapping()
 	public boolean delete(int skaterId) {
 		boolean deletedSkater = false;
-		Skater s = whalersDAO.findById(skaterId);
+		Skater s = skaterDAO.findById(skaterId);
 		if(s != null) {
-			deletedSkater = whalersDAO.delete(skaterId);
+			deletedSkater = skaterDAO.delete(skaterId);
 		}
 		return deletedSkater;
+	}
+	
+	@GetMapping("addSkater.do")
+	public Skater addSkater(Skater skater) {
+		Skater newGuy = skaterDAO.create(skater);
+		return newGuy;
 	}
 }

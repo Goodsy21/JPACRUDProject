@@ -47,7 +47,7 @@
 	<label for= "hometown">Hometown:</label>
     <input type="text" name="hometown" required="required" value="${skater.hometown}" />
     <br>
-    <input action="skater.jsp" type= "submit" value= "Update Player">
+    <input type= "submit" value= "Update Player">
     <br>
  </form>
 </body>
