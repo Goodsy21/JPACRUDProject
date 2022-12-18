@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 @Entity
 public class Skater {
 
@@ -23,6 +24,7 @@ public class Skater {
 	private String position;
 	
 	private String hometown;
+	
 	public int getId() {
 		return id;
 	}

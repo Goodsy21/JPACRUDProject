@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Tail Flap!</title>
+<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 <h1>Wheat Ridge Whalers Hockey Team</h1>

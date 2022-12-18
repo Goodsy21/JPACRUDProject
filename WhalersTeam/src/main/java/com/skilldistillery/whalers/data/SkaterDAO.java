@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.skilldistillery.whalers.entities.Skater;
 
-public interface WhalersDAO {
+public interface SkaterDAO {
 	Skater findById(int skaterId);
 	List<Skater> findAll();
 	Skater create(Skater skater);

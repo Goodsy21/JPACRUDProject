@@ -6,8 +6,6 @@
     
     <!-- begin entities -->
     <class>com.skilldistillery.whalers.entities.Skater</class>
-<!--     <class>com.skilldistillery.whalers.entities.Goalie</class>
- -->    
     <!-- end entities -->
     
 

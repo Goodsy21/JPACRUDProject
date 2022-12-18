@@ -9,12 +9,13 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.skilldistillery.whalers.entities.Skater;
 
 @Service
 @Transactional
-public class WhalersDAOImpl implements WhalersDAO {
+public class SkaterDAOImpl implements SkaterDAO {
 
 	@PersistenceContext
 	private EntityManager em;
@@ -25,6 +26,7 @@ public class WhalersDAOImpl implements WhalersDAO {
 	}
 
 	@Override
+	@RequestMapping
 	public List<Skater> findAll() {
 		String jpql = "Select s from Skater s";
 		return em.createQuery(jpql, Skater.class).getResultList();
@@ -39,8 +41,10 @@ public class WhalersDAOImpl implements WhalersDAO {
 	@Override
 	public Skater update(int skaterId, Skater skater) {
 		Skater s = em.find(Skater.class, skaterId);
-		
-		return null;
+		if (s != null) {
+			
+		}
+		return s;
 	}
 
 	@Override
