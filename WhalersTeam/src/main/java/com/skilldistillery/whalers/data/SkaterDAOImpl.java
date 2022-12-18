@@ -21,6 +21,9 @@ public class SkaterDAOImpl implements SkaterDAO {
 	public Skater findById(int skaterId) {
 		return em.find(Skater.class, skaterId);
 	}
+	public Skater findByLastName(String ln) {
+		return em.find(Skater.class, ln);
+	}
 
 	@Override
 	@RequestMapping

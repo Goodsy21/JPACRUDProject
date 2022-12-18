@@ -10,6 +10,7 @@
 </head>
 <body>
 <h1>Player Removed</h1>
+<p>${skater.firstName } ${skater.lastName } has been cut from the pod.
 <a href="home.do">Back to Home</a>
 
 </body>
