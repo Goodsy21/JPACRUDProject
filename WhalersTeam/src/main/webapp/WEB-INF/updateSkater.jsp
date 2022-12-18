@@ -51,5 +51,4 @@
     <input type= "submit" value= "Update Player">
     <br>
  </form>
-<a href="home.do">Home</a></body>
 </html>

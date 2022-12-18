@@ -32,7 +32,7 @@ public class SkaterController {
 	}
 	
 	@PostMapping(path="updateSkater.do", params= {"id", "firstName", "lastName", "number", "position", "hometown"})
-	public void updateSkater(int id, String firstName, String lastName, int number, String position, String hometown) {
+	public String updateSkater(int id, String firstName, String lastName, int number, String position, String hometown) {
 		Skater newSkater = new Skater();
 		newSkater.setFirstName(firstName);
 		newSkater.setLastName(lastName);
@@ -40,6 +40,8 @@ public class SkaterController {
 		newSkater.setHometown(hometown);
 		newSkater.setPosition(position);
 		skaterDAO.update(id, newSkater);
+		
+		return "playerEditedConfirmation";
 		
 	}
 	@GetMapping("deleteSkater.do")
@@ -52,9 +54,20 @@ public class SkaterController {
 		return "deleteConfirmation";
 	}
 	
-	@GetMapping("addSkater.do")
-	public Skater addSkater(Skater skater) {
-		Skater newGuy = skaterDAO.create(skater);
-		return newGuy;
+	@GetMapping("createSkater.do")
+	public String addSkater() {
+//		Skater newGuy = skaterDAO.create(skater);
+		return "createSkater";
+	}
+	@PostMapping(path="createSkater.do", params= {"firstName", "lastName", "number", "position", "hometown"})
+	public String createSkater(String firstName, String lastName, int number, String position, String hometown) {
+		Skater skater = new Skater();
+		skater.setFirstName(firstName);
+		skater.setLastName(lastName);
+		skater.setHometown(hometown);
+		skater.setNumber(number);
+		skater.setPosition(position);
+		skaterDAO.create(skater);
+		return "playerCreatedConfirmation";
 	}
 }
