@@ -1,5 +1,6 @@
 package com.skilldistillery.whalers.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -21,8 +22,42 @@ public class SkaterDAOImpl implements SkaterDAO {
 	public Skater findById(int skaterId) {
 		return em.find(Skater.class, skaterId);
 	}
-	public Skater findByLastName(String ln) {
-		return em.find(Skater.class, ln);
+	public List<Skater> searchSkater(String searchBy, String searchInput) {
+		List<Skater> allSkaters = findAll();
+		List<Skater> matchingSkaters = new ArrayList<>();
+		
+		for (int i = 0; i < allSkaters.size(); i++) {
+			switch (searchBy) {
+			case "firstName":
+				if (searchInput.equalsIgnoreCase(allSkaters.get(i).getFirstName())) {
+					matchingSkaters.add(allSkaters.get(i));
+				}			
+				break;
+			case "lastName":
+				if (searchInput.equalsIgnoreCase(allSkaters.get(i).getFirstName())) {
+					matchingSkaters.add(allSkaters.get(i));
+				}			
+				break;
+			case "number":
+				if (searchInput.equals(allSkaters.get(i).getNumber())) {
+					matchingSkaters.add(allSkaters.get(i));
+				}			
+				break;
+			case "position":
+				if (searchInput.equalsIgnoreCase(allSkaters.get(i).getPosition())) {
+					matchingSkaters.add(allSkaters.get(i));
+				}			
+				break;
+			case "hometown":
+				if (searchInput.equalsIgnoreCase(allSkaters.get(i).getHometown())) {
+					matchingSkaters.add(allSkaters.get(i));
+				}			
+				break;
+			default:
+				break;
+			}
+		}
+		return matchingSkaters;
 	}
 
 	@Override

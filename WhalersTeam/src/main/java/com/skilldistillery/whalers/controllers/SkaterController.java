@@ -22,6 +22,13 @@ public class SkaterController {
 		model.addAttribute("skater", skaterDAO.findAll());
 		return "home";
 	}
+	
+	@GetMapping(path="searchSkater.do", params={"searchBy", "searchInput"})
+	public String searchSkater(String searchBy, String searchInput, Model model) {
+		skaterDAO.searchSkater(searchBy, searchInput);
+		model.addAttribute("skater", skaterDAO.searchSkater(searchBy, searchInput));
+		return "home";
+	}
 	@GetMapping("updatePlayer.do")
 	public String goToSkater(@RequestParam int fid, Model model) {
 		Skater s = skaterDAO.findById(fid);
@@ -31,7 +38,7 @@ public class SkaterController {
 	}
 	
 	@PostMapping(path="updateSkater.do", params= {"id", "firstName", "lastName", "number", "position", "hometown"})
-	public String updateSkater(int id, String firstName, String lastName, int number, String position, String hometown) {
+	public String updateSkater(int id, String firstName, String lastName, int number, String position, String hometown, Model model) {
 		Skater newSkater = new Skater();
 		newSkater.setFirstName(firstName);
 		newSkater.setLastName(lastName);
@@ -40,17 +47,17 @@ public class SkaterController {
 		newSkater.setPosition(position);
 		skaterDAO.update(id, newSkater);
 		
-		return "playerEditedConfirmation";
+		return goToHome(model);
 		
 	}
 	@GetMapping("deleteSkater.do")
-	public String delete(@RequestParam int fid) {
+	public String delete(@RequestParam int fid, Model model) {
 		boolean deletedSkater = false;
 		Skater s = skaterDAO.findById(fid);
 		if(s != null) {
 			skaterDAO.delete(fid);
 		}
-		return "deleteConfirmation";
+		return goToHome(model);
 	}
 	
 	@GetMapping("createSkater.do")
@@ -59,7 +66,7 @@ public class SkaterController {
 		return "createSkater";
 	}
 	@PostMapping(path="createSkater.do", params= {"firstName", "lastName", "number", "position", "hometown"})
-	public String createSkater(String firstName, String lastName, int number, String position, String hometown) {
+	public String createSkater(String firstName, String lastName, int number, String position, String hometown, Model model) {
 		Skater skater = new Skater();
 		skater.setFirstName(firstName);
 		skater.setLastName(lastName);
@@ -67,6 +74,6 @@ public class SkaterController {
 		skater.setNumber(number);
 		skater.setPosition(position);
 		skaterDAO.create(skater);
-		return "playerCreatedConfirmation";
+		return goToHome(model);
 	}
 }

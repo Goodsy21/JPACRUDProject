@@ -10,5 +10,5 @@ public interface SkaterDAO {
 	Skater create(Skater skater);
 	Skater update(int skaterId, Skater skater);
 	boolean delete(int skaterId);
-	Skater findByLastName(String ln);
+	List<Skater> searchSkater(String searchBy, String searchInput);
 }
