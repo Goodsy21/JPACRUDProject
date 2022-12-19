@@ -34,7 +34,7 @@ public class SkaterDAOImpl implements SkaterDAO {
 				}			
 				break;
 			case "lastName":
-				if (searchInput.equalsIgnoreCase(allSkaters.get(i).getFirstName())) {
+				if (searchInput.equalsIgnoreCase(allSkaters.get(i).getLastName())) {
 					matchingSkaters.add(allSkaters.get(i));
 				}			
 				break;
